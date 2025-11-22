@@ -1,113 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>HighTech Consultancy – Financial Statement Builder</title>
 
-    <title>HighTech Consultancy – Financial Statement Builder</title>
+<!-- ====== Gradio Web Component ====== -->
+<script type="module"
+    src="https://gradio.s3-us-west-2.amazonaws.com/6.0.0/gradio.js">
+</script>
 
-    <!-- Gradio Script -->
-    <script 
-        type="module" 
-        src="https://gradio.s3-us-west-2.amazonaws.com/6.0.0/gradio.js">
-    </script>
+<!-- ====== PAGE STYLE ====== -->
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #0f172a;
+        color: white;
+        font-family: "Inter", sans-serif;
+    }
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: "Inter", sans-serif;
-            background: #0f172a; /* Deep blue */
-            color: white;
-        }
+    .container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px 30px;
+        background: #1e293b;
+        border-radius: 16px;
+        box-shadow: 0 0 40px rgba(0,0,0,0.3);
+    }
 
-        .container {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-        }
+    h1 {
+        text-align: center;
+        margin-bottom: 10px;
+        font-size: 32px;
+    }
 
-        h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
+    .subtitle {
+        text-align: center;
+        font-size: 17px;
+        margin-bottom: 30px;
+        opacity: 0.9;
+    }
 
-        p.subtitle {
-            font-size: 18px;
-            text-align: center;
-            opacity: 0.9;
-            margin-bottom: 40px;
-        }
+    /* 🛠 FIX GRADIO WHITE BAR BUG */
+    gradio-app {
+        --color-background: #0f172a !important;
+        --block-background-fill: #0f172a !important;
+        --panel-background-fill: #0f172a !important;
+        --chatbot-bg-color: #0f172a !important;
+    }
 
-        /* Dark glass card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.06);
-            padding: 25px;
-            border-radius: 16px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(6px);
-        }
+    /* Remove white bar behind input inside shadow DOM */
+    gradio-app::part(input-container),
+    gradio-app::part(container),
+    gradio-app::part(block),
+    gradio-app::part(form) {
+        background: #1e293b !important;
+        border: none !important;
+    }
 
-        /* Center chatbox */
-        .chat-wrapper {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-        }
+    /* Textbox fix */
+    gradio-app textarea {
+        background: #1e1e1e !important;
+        color: white !important;
+        border: none !important;
+    }
 
-        /* ==========================================
-           FIX FOR WHITE BAR IN GRADIO CHAT INPUT
-           ========================================== */
-        gradio-app textarea,
-        gradio-app::part(input) textarea {
-            background-color: #1e1e1e !important;
-            color: white !important;
-        }
+    /* Button fix */
+    gradio-app button {
+        background: #1e1e1e !important;
+        color: white !important;
+        border: none !important;
+    }
+</style>
 
-        gradio-app button,
-        gradio-app::part(buttons) {
-            background-color: #1e1e1e !important;
-            border: none !important;
-            color: white !important;
-        }
-
-        /* Fix the right-side white padding issue */
-        gradio-app .wrap.svelte-ypxf1q {
-            background: #1e1e1e !important;
-        }
-
-        /* Make container fully dark so no white edges leak */
-        gradio-app {
-            --block-background-fill: #1e1e1e !important;
-            --panel-background-fill: #1e1e1e !important;
-        }
-    </style>
 </head>
 
 <body>
 
-    <div class="container">
-
-        <h1>HighTech Consultancy</h1>
-        <p class="subtitle">
-            Automated IFRS-Compliant Balance Sheet & Profit/Loss Builder
-        </p>
-
-        <div class="glass-card">
-            <p>
-                Welcome to your intelligent accounting assistant.  
-                This tool guides you through creating accurate financial statements  
-                using strict double-entry bookkeeping.  
-                Start by describing your business and financial year.
-            </p>
-        </div>
-
-        <div class="chat-wrapper">
-            <gradio-app src="https://shuvraai-fs-agent.hf.space"></gradio-app>
-        </div>
-
+<div class="container">
+    <h1>HighTech Consultancy</h1>
+    <div class="subtitle">
+        Your automated Chartered Accountant for Balance Sheet & P&L creation.
     </div>
+
+    <!-- CHAT BOX EMBED -->
+    <gradio-app src="https://shuvraai-fs-agent.hf.space"></gradio-app>
+</div>
 
 </body>
 </html>
