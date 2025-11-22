@@ -3,127 +3,108 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>HighTech Consultancy – Financial Statement Builder</title>
+
+    <!-- Gradio Script -->
+    <script 
+        type="module" 
+        src="https://gradio.s3-us-west-2.amazonaws.com/6.0.0/gradio.js">
+    </script>
 
     <style>
         body {
             margin: 0;
             padding: 0;
-            font-family: "Inter", Arial, sans-serif;
-            background: #f4f7fa;
-            color: #2a2a2a;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            text-align: center;
-            padding: 90px 20px;
-            background: linear-gradient(135deg, #204ecf, #4f8dff);
+            font-family: "Inter", sans-serif;
+            background: #0f172a; /* Deep blue */
             color: white;
         }
-        .hero h1 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        .hero h3 {
-            font-size: 20px;
-            margin-bottom: 18px;
-            opacity: 0.95;
-        }
-        .hero p {
-            max-width: 760px;
-            margin: 0 auto;
-            font-size: 18px;
-            line-height: 1.6;
-            opacity: 0.92;
-        }
-        .cta-button {
-            display: inline-block;
-            background: #112f99;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 600;
-            margin-top: 25px;
-            transition: 0.2s;
-        }
-        .cta-button:hover { background: #0c257a; }
 
-
-        /* MAIN CONTAINER */
         .container {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
         }
 
-        /* FEATURE BOXES */
-        .feature-box {
-            background: white;
-            border-radius: 12px;
-            padding: 25px 28px;
-            margin-bottom: 35px;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            text-align: center;
         }
 
-        /* CHAT WRAPPER */
+        p.subtitle {
+            font-size: 18px;
+            text-align: center;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        /* Dark glass card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            padding: 25px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(6px);
+        }
+
+        /* Center chatbox */
         .chat-wrapper {
             margin-top: 40px;
-            background: white;
-            padding: 30px;
-            border-radius: 14px;
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+            display: flex;
+            justify-content: center;
         }
 
-        .chat-wrapper h2 {
-            margin-top: 0;
+        /* ==========================================
+           FIX FOR WHITE BAR IN GRADIO CHAT INPUT
+           ========================================== */
+        gradio-app textarea,
+        gradio-app::part(input) textarea {
+            background-color: #1e1e1e !important;
+            color: white !important;
+        }
+
+        gradio-app button,
+        gradio-app::part(buttons) {
+            background-color: #1e1e1e !important;
+            border: none !important;
+            color: white !important;
+        }
+
+        /* Fix the right-side white padding issue */
+        gradio-app .wrap.svelte-ypxf1q {
+            background: #1e1e1e !important;
+        }
+
+        /* Make container fully dark so no white edges leak */
+        gradio-app {
+            --block-background-fill: #1e1e1e !important;
+            --panel-background-fill: #1e1e1e !important;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- HERO -->
-    <div class="hero">
-        <h1>Financial Statement Builder</h1>
-        <h3>Powered by HighTech Consultancy</h3>
-        <p>
-            Your intelligent virtual CA helps you record transactions, maintain proper double-entry books, 
-            and instantly generate accurate Balance Sheets and Profit & Loss statements. 
-            Just start chatting below.
-        </p>
-        <a class="cta-button" href="#chatbox">Start Now</a>
-    </div>
-
-    <!-- MAIN CONTENT -->
     <div class="container">
 
-        <div class="feature-box">
-            <h2>About HighTech Consultancy</h2>
+        <h1>HighTech Consultancy</h1>
+        <p class="subtitle">
+            Automated IFRS-Compliant Balance Sheet & Profit/Loss Builder
+        </p>
+
+        <div class="glass-card">
             <p>
-                HighTech Consultancy combines financial expertise with cutting-edge AI to simplify accounting 
-                for small and medium businesses. Whether you run a grocery store, salon, restaurant, or retail 
-                shop, our AI agent ensures accuracy and ease at every step.
+                Welcome to your intelligent accounting assistant.  
+                This tool guides you through creating accurate financial statements  
+                using strict double-entry bookkeeping.  
+                Start by describing your business and financial year.
             </p>
         </div>
 
-        <!-- CHAT BOX -->
-        <div class="chat-wrapper" id="chatbox">
-            <h2>Your Virtual CA Assistant</h2>
-            <p>Chat below to begin preparing your financial statements.</p>
-
-            <script
-                type="module"
-                src="https://gradio.s3-us-west-2.amazonaws.com/6.0.0/gradio.js"
-            ></script>
-
-            <gradio-app 
-                src="https://shuvraai-fs-agent.hf.space"
-                style="height: 650px; width: 100%; border-radius: 12px; overflow: hidden;"
-            ></gradio-app>
+        <div class="chat-wrapper">
+            <gradio-app src="https://shuvraai-fs-agent.hf.space"></gradio-app>
         </div>
 
     </div>
