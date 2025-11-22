@@ -1,52 +1,132 @@
-<!-- TODO 1: Create the HTML Boilerplate -->
-
-<!-- TODO 2: Add Your previous projects' HTML into the public folder -->
-
-<!-- TODO 3: Take screenshots of your project previews and add the images to the images folder -->
-
-<!-- TODO 4: Add titles/subtitles etc. -->
-
-<!-- TODO 5: Add a link to the project pages -->
-
-<!-- TODO 6: Add images to show the project previews
-HINT for TODO 6: You can use the height attribute set to 200 to make the image smaller:
-https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-height -->
-
-<!-- TODO 7: Add the Contact Me and About Me page links -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HighTech Consultancy – Financial Statement Builder</title>
 
-	<script
-		type="module"
-		src="https://gradio.s3-us-west-2.amazonaws.com/6.0.0/gradio.js"
-	></script>
-    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Inter", Arial, sans-serif;
+            background: #f4f7fa;
+            color: #2a2a2a;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            text-align: center;
+            padding: 90px 20px;
+            background: linear-gradient(135deg, #204ecf, #4f8dff);
+            color: white;
+        }
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .hero h3 {
+            font-size: 20px;
+            margin-bottom: 18px;
+            opacity: 0.95;
+        }
+        .hero p {
+            max-width: 760px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.6;
+            opacity: 0.92;
+        }
+        .cta-button {
+            display: inline-block;
+            background: #112f99;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 17px;
+            font-weight: 600;
+            margin-top: 25px;
+            transition: 0.2s;
+        }
+        .cta-button:hover { background: #0c257a; }
+
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        /* FEATURE BOXES */
+        .feature-box {
+            background: white;
+            border-radius: 12px;
+            padding: 25px 28px;
+            margin-bottom: 35px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+        }
+
+        /* CHAT WRAPPER */
+        .chat-wrapper {
+            margin-top: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        .chat-wrapper h2 {
+            margin-top: 0;
+        }
+    </style>
 </head>
+
 <body>
-    
-    <h1 style="text-align:center;">Let organize your FS</h1>
-    <gradio-app src="https://shuvraai-fs-agent.hf.space"></gradio-app>
-    
-    <!--<h1>Shuvranil's Portfolio</h1>
-    <h2>I am a Web Developer</h2>
-    <hr/>
-    <a href="./public/birthday-invite.html">
-        <h2>Birthday Project</h2>
-    </a>
-    <img src = "./assets/images/birthday-invite.png" height="400">
-    <br><br/>
-    <br><br/>
-    <a href="./public/movie-ranking.html">
-        <h2>Movie-ranking Project</h2>
-    </a>
-    <img src = "./assets/images/movie-ranking.png" height="400">
-    <hr/>
-    <a href="./public/about.html"> About Me</a>
-    <a href="./public/contact.html"> Contact Me</a> -->
+
+    <!-- HERO -->
+    <div class="hero">
+        <h1>Financial Statement Builder</h1>
+        <h3>Powered by HighTech Consultancy</h3>
+        <p>
+            Your intelligent virtual CA helps you record transactions, maintain proper double-entry books, 
+            and instantly generate accurate Balance Sheets and Profit & Loss statements. 
+            Just start chatting below.
+        </p>
+        <a class="cta-button" href="#chatbox">Start Now</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+
+        <div class="feature-box">
+            <h2>About HighTech Consultancy</h2>
+            <p>
+                HighTech Consultancy combines financial expertise with cutting-edge AI to simplify accounting 
+                for small and medium businesses. Whether you run a grocery store, salon, restaurant, or retail 
+                shop, our AI agent ensures accuracy and ease at every step.
+            </p>
+        </div>
+
+        <!-- CHAT BOX -->
+        <div class="chat-wrapper" id="chatbox">
+            <h2>Your Virtual CA Assistant</h2>
+            <p>Chat below to begin preparing your financial statements.</p>
+
+            <script
+                type="module"
+                src="https://gradio.s3-us-west-2.amazonaws.com/6.0.0/gradio.js"
+            ></script>
+
+            <gradio-app 
+                src="https://shuvraai-fs-agent.hf.space"
+                style="height: 650px; width: 100%; border-radius: 12px; overflow: hidden;"
+            ></gradio-app>
+        </div>
+
+    </div>
+
 </body>
 </html>
